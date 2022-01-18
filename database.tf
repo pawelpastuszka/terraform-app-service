@@ -13,8 +13,8 @@ resource "azurerm_mysql_server" "sql_server" {
   ssl_enforcement_enabled           = true
   ssl_minimal_tls_version_enforced  = "TLS1_2"
 
-  administrator_login          = var.sql_server_login
-  administrator_login_password = var.sql_server_password
+  administrator_login          = random_string.string.result
+  administrator_login_password = random_password.password.result
 }
 
 resource "azurerm_mysql_database" "sql_database" {
@@ -23,4 +23,15 @@ resource "azurerm_mysql_database" "sql_database" {
   server_name         = azurerm_mysql_server.sql_server.name
   charset             = "utf8"
   collation           = "utf8_unicode_ci"
+}
+
+resource "random_string" "string" {
+  length  = 10
+  special = false
+}
+
+resource "random_password" "password" {
+  length           = 16
+  special          = true
+  override_special = "_%@"
 }
