@@ -1,3 +1,4 @@
+/* 
 resource "azurerm_storage_account" "storage_account" {
   name                     = "sa${var.app_name}"
   resource_group_name      = var.rg_name
@@ -29,3 +30,4 @@ data "azurerm_storage_account_blob_container_sas" "storage_container_sas" {
     list   = true
   }
 }
+*/

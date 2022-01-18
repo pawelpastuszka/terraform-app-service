@@ -1,20 +1,21 @@
-variable "app_name" {
-  type    = string
-  default = "test3728991"
+variable "project" {
+  type = string
 }
+
+variable "owner" {
+  type = string
+}
+
+variable "env" {
+  type = string
+}
+
 variable "location" {
-  type    = string
-  default = "South Central US"
+  type = string
 }
 variable "rg_name" {
-  type    = string
-  default = "1-86644d86-playground-sandbox"
+  type = string
 }
-variable "sql_server_login" {
-  type    = string
-  default = "mysqladmin"
-}
-variable "sql_server_password" {
-  type    = string
-  default = "test112@!"
-}
+
+#todo keyvault
+#todo nazwa zasobow

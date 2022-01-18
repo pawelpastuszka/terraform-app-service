@@ -1,3 +1,4 @@
+/*
 resource "azurerm_mysql_server" "sql_server" {
   name                              = "sql-${var.app_name}"
   location                          = azurerm_app_service_plan.app_service_plan.location
@@ -35,3 +36,4 @@ resource "random_password" "password" {
   special          = true
   override_special = "_%@"
 }
+*/

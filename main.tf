@@ -12,7 +12,23 @@ provider "azurerm" {
   skip_provider_registration = true
 }
 
+module "resource-prefix" {
+  source  = "./modules/resource-prefix"
+  owner   = var.owner
+  env     = var.env
+  project = var.project
+}
 
+resource "azurerm_virtual_network" "vnet1" {
+  name = "${module.resource-prefix.prefix}-vnet"
+  resource_group_name = "1-b6e24d41-playground-sandbox"
+  location = "southcentralus"
+  address_space = ["10.0.0.0/16"]
+}
+
+
+
+/*
 resource "azurerm_app_service_plan" "app_service_plan" {
   name                = "app-service-plan"
   location            = var.location
@@ -69,3 +85,5 @@ resource "azurerm_application_insights" "app_insight" {
   resource_group_name = var.rg_name
   application_type    = "web"
 }
+
+*/
