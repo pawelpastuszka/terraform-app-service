@@ -1,6 +1,5 @@
-/*
 resource "azurerm_mysql_server" "sql_server" {
-  name                              = "sql-${var.app_name}"
+  name                              = "sql-${var.project}"
   location                          = azurerm_app_service_plan.app_service_plan.location
   resource_group_name               = var.rg_name
   version                           = "5.7"
@@ -19,7 +18,7 @@ resource "azurerm_mysql_server" "sql_server" {
 }
 
 resource "azurerm_mysql_database" "sql_database" {
-  name                = "sqldb_${var.app_name}"
+  name                = "sqldb_${var.project}"
   resource_group_name = var.rg_name
   server_name         = azurerm_mysql_server.sql_server.name
   charset             = "utf8"
@@ -36,4 +35,3 @@ resource "random_password" "password" {
   special          = true
   override_special = "_%@"
 }
-*/

@@ -1,6 +1,5 @@
-/* 
 resource "azurerm_storage_account" "storage_account" {
-  name                     = "sa${var.app_name}"
+  name                     = "sa${var.project}"
   resource_group_name      = var.rg_name
   location                 = var.location
   account_tier             = "Standard"
@@ -8,7 +7,7 @@ resource "azurerm_storage_account" "storage_account" {
 }
 
 resource "azurerm_storage_container" "storage_container" {
-  name                  = "sc-${var.app_name}"
+  name                  = "sc-${var.project}"
   storage_account_name  = azurerm_storage_account.storage_account.name
   container_access_type = "private"
 }
@@ -30,4 +29,3 @@ data "azurerm_storage_account_blob_container_sas" "storage_container_sas" {
     list   = true
   }
 }
-*/
