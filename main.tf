@@ -26,12 +26,20 @@ module "rg" {
   tags            = local.tags
 }
 
-module "db" {
-  source          = "./modules/database"
+module "kv" {
+  source          = "./modules/key-vault"
   location        = var.location
   resource_prefix = local.resource_prefix
   tags            = local.tags
+}
+
+module "db" {
+  source              = "./modules/database"
+  location            = var.location
+  resource_prefix     = local.resource_prefix
+  tags                = local.tags
   resource_group_name = module.rg.rg_name
+  keyvault_id         = module.kv.id
 }
 
 resource "azurerm_virtual_network" "vnet1" {

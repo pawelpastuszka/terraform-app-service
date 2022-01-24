@@ -7,11 +7,6 @@ variable "resource_prefix" {
 variable "tags" {
   type = map(string)
 }
-
 variable "resource_group_name" {
-  type = string
-}
-
-variable "keyvault_id" {
   type = string
 }
