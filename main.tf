@@ -19,6 +19,13 @@ module "resource-prefix" {
   project = var.project
 }
 
+module "rg" {
+  source                  = "./modules/resource-group"
+  location                = var.location
+  resource_project_prefix = local.resource_project_prefix
+  tags                    = local.tags
+}
+
 resource "azurerm_virtual_network" "vnet1" {
   name                = "${module.resource-prefix.prefix}-vnet"
   resource_group_name = "1-b6e24d41-playground-sandbox"
