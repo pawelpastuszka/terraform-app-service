@@ -3,9 +3,9 @@ variable "tags" {
 }
 
 variable "location" {
-    type = string
+  type = string
 }
 
-variable "resource_project_prefix" {
-    type = string
+variable "resource_prefix" {
+  type = string
 }

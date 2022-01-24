@@ -1,6 +1,5 @@
 locals {
-  resource_prefix         = "${substr(var.owner, 0, 1)}${substr(terraform.workspace, 0, 1)}"
-  resource_project_prefix = "${local.resource_prefix}-${var.project}"
+  resource_prefix = "${substr(var.owner, 0, 1)}${substr(terraform.workspace, 0, 1)}-${var.project}"
 
   tags = {
     "Owner"       = var.owner,

@@ -1,7 +1,7 @@
 resource "azurerm_mysql_server" "sql_server" {
-  name                              = "sql-${var.project}"
-  location                          = azurerm_app_service_plan.app_service_plan.location
-  resource_group_name               = var.rg_name
+  name                              = "${var.resource_prefix}-sql"
+  location                          = var.location
+  resource_group_name               = var.resource_group_name
   version                           = "5.7"
   sku_name                          = "GP_Gen5_2"
   storage_mb                        = 5120

@@ -20,10 +20,18 @@ module "resource-prefix" {
 }
 
 module "rg" {
-  source                  = "./modules/resource-group"
-  location                = var.location
-  resource_project_prefix = local.resource_project_prefix
-  tags                    = local.tags
+  source          = "./modules/resource-group"
+  location        = var.location
+  resource_prefix = local.resource_prefix
+  tags            = local.tags
+}
+
+module "db" {
+  source          = "./modules/database"
+  location        = var.location
+  resource_prefix = local.resource_prefix
+  tags            = local.tags
+  resource_group_name = module.rg.rg_name
 }
 
 resource "azurerm_virtual_network" "vnet1" {
